@@ -21,19 +21,20 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("w") && IsGrounded() && canJump)
+        if (Input.GetKeyDown("w") && IsGrounded())
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             canJump = false;
             StartCoroutine(ShootDelay());
         }
+        float x = Input.GetAxis("Horizontal");
+        Vector3 move = new Vector3(x * speed, rb.velocity.y, 0f);
+        rb.velocity = move;
     }
 
     void FixedUpdate()
     {
-        float x = Input.GetAxis("Horizontal");
-        Vector3 move = new Vector3(x * speed, rb.velocity.y, 0f);
-        rb.velocity = move;
+        
     }
 
     bool IsGrounded()

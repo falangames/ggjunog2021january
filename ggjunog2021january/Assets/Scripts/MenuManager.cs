@@ -41,8 +41,8 @@ public class MenuManager : MonoBehaviour
     }
     public void OnClick_ContinueButton()
     {
+        Time.timeScale = 1;
         InGamePanel.SetActive(true);
         PausePanel.SetActive(false);
-        Time.timeScale = 1;
     }
 }
