@@ -9,8 +9,11 @@ public class PlayerController : MonoBehaviour
     public float speed;
     Rigidbody2D rb;
     public float distance = 1.0f;
+    public float delayInSeconds = 0.5f;
 
+    bool canJump = true;
 
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -18,9 +21,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("w") && IsGrounded())
+        if (Input.GetKeyDown("w") && IsGrounded() && canJump)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            canJump = false;
+            StartCoroutine(ShootDelay());
         }
     }
 
@@ -35,13 +40,16 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 position = transform.position;
         Vector2 direction = Vector2.down;
-
         RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, whatIsGround);
         if (hit.collider != null)
         {
             return true;
         }
-
         return false;
+    }
+    IEnumerator ShootDelay()
+    {
+        yield return new WaitForSeconds(delayInSeconds);
+        canJump = true;
     }
 }
