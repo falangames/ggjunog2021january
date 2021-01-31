@@ -7,16 +7,9 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject InGamePanel;
     public GameObject PausePanel;
+    public GameObject TaskPanel;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
+    public GameObject TaskText;
 
     public void OnClick_PlayButton()
     {
@@ -44,5 +37,14 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1;
         InGamePanel.SetActive(true);
         PausePanel.SetActive(false);
+    }
+    public void OnClick_ExitParch()
+    {
+        Time.timeScale = 1;
+        TaskPanel.SetActive(false);
+        InGamePanel.SetActive(true);
+        PausePanel.SetActive(false);
+        TaskText.SetActive(false);
+        PlayerController.Instance.controlIsActive = true;
     }
 }

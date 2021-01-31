@@ -1,18 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TaskManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject InGamePanel;
+    public GameObject PausePanel;
+    public GameObject TaskPanel;
+    public GameObject TaskText;
+    public string TaskName;
+    public string TaskString;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.tag == "Player")
+        {
+            InGamePanel.SetActive(false);
+            TaskPanel.SetActive(true);
+            PausePanel.SetActive(false);
+            TaskText.SetActive(true);
+            if (TaskName == this.name)
+            {
+                TaskText.GetComponent<Text>().text = TaskString;
+            }
+            if (TaskName == this.name)
+            {
+                TaskText.GetComponent<Text>().text = TaskString;
+            }
+            Destroy(this.gameObject);
+            PlayerController.Instance.controlIsActive = false;
+        }
     }
 }
