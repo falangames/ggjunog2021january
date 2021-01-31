@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -38,13 +39,15 @@ public class MenuManager : MonoBehaviour
         InGamePanel.SetActive(true);
         PausePanel.SetActive(false);
     }
-    public void OnClick_ExitParch()
+    /*public void OnClick_ExitParch()
     {
         Time.timeScale = 1;
         TaskPanel.SetActive(false);
         InGamePanel.SetActive(true);
         PausePanel.SetActive(false);
         TaskText.SetActive(false);
+        TaskText.GetComponent<Text>().text = "";
         PlayerController.Instance.controlIsActive = true;
-    }
+        TaskManager.Instance.dst();
+    }*/
 }

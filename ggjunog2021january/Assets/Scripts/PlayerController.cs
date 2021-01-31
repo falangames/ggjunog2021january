@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public float distance = 1.0f;
     public float delayInSeconds = 0.5f;
     bool canJump = true;
-    public bool controlIsActive = true;
+    public bool controlIsActive = false;
     void Start()
     {
         Instance = this;
