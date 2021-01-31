@@ -28,8 +28,7 @@ public class TextManager : MonoBehaviour
     }*/
 
     public float letterPause = 0.2f;
-    public AudioClip typeSound1;
-    public AudioClip typeSound2;
+    public AudioClip[] audioClips;
 
     string message;
     Text textComp;
@@ -48,8 +47,7 @@ public class TextManager : MonoBehaviour
         {
             textComp.text += letter;
             a++;
-            //if (typeSound1 && typeSound2)
-            //    SoundManager.instance.RandomizeSfx(typeSound1, typeSound2);
+            SoundManager.Instance.RandomSoundEffect(audioClips);
             yield return 0;
             yield return new WaitForSeconds(letterPause);
         }
